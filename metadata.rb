@@ -1,10 +1,10 @@
-name             "newrelic-sysmond"
-maintainer       "Phil Cohen"
-maintainer_email "github@phlippers.net"
+name             "shlomo-newrelic"
+maintainer       "Shlomo Swidler"
+maintainer_email "shlomo.swidler@orchestratus.com"
 license          "MIT"
 description      "Setup New Relic sysmond for server monitoring"
 long_description IO.read(File.join(File.dirname(__FILE__), "README.md"))
-version          "1.3.3"
+version          "0.1.0"
 
 recipe "newrelic-sysmond", "Install and configure newrelic-sysmond"
 
@@ -12,3 +12,5 @@ supports "debian"
 supports "ubuntu"
 supports "redhat", ">= 5.0"
 supports "centos", ">= 5.0"
+
+depends "chef-newrelic-sysmond", "= 1.3.3"
