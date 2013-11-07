@@ -9,10 +9,10 @@ unless node[:new_relic][:license_key].nil?
   end
 
   execute "initialize newrelic" do
-    environment {
+    environment ({
       "NR_INSTALL_SILENT" => "true",
       "NR_INSTALL_KEY" => node[:new_relic][:license_key]
-    }
+    })
     command "newrelic-install install"
     action :nothing
   end
