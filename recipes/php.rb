@@ -2,7 +2,7 @@
 
 unless node[:new_relic][:license_key].nil?
 
-  include_recipe 'shlomo-newrelic::default'
+  include_recipe 'shlomo-newrelic'
 
   package 'newrelic-php5' do
     notifies :run, "execute[initialize newrelic]", :immediately
