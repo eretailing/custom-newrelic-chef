@@ -20,7 +20,7 @@ unless node["new_relic"]["license_key"].empty?
       end
     end
 
-    include_recipe "chef-newrelic-sysmond::default"
+    include_recipe "newrelic-sysmond"
     
     rewind "apt_repository[newrelic]" do
       action :nothing
@@ -28,7 +28,7 @@ unless node["new_relic"]["license_key"].empty?
     
   when "redhat", "centos", "amazon", "scientific"
 
-    include_recipe "chef-newrelic-sysmond::default"
+    include_recipe "newrelic-sysmond"
     
   end
 
