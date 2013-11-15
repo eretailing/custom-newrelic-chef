@@ -4,9 +4,7 @@ unless node[:new_relic][:license_key].nil?
 
   include_recipe 'shlomo-newrelic'
 
-  package 'newrelic-php5' do
-    notifies :run, "execute[initialize newrelic]", :immediately
-  end
+  package 'newrelic-php5'
 
   execute "initialize newrelic" do
     environment ({
@@ -14,6 +12,5 @@ unless node[:new_relic][:license_key].nil?
       "NR_INSTALL_KEY" => node[:new_relic][:license_key]
     })
     command "newrelic-install install"
-    action :nothing
   end
 end
