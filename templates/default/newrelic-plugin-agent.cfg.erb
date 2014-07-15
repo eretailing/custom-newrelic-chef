@@ -1,4 +1,4 @@
-<% print "apache_httpd = #{@apache_httpd.inspect}\nphp_apc = #{@php_apc.inspect}\nnode = #{node.inspect}\n"%>%YAML 1.2
+<% Chef::Log.info("apache_httpd = #{@apache_httpd.inspect}\nphp_apc = #{@php_apc.inspect}\nnode = #{node.inspect}\n") %>%YAML 1.2
 ---
 
 Daemon:n
