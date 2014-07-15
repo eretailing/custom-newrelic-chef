@@ -5,7 +5,7 @@ package "python-pip"
 
 execute "pip install newrelic-plugin-agent"
 
-if node[:new_relic][:meetme_plugin][:activate_plugins] && node[:new_relic][:meetme_plugin][:activate_plugins].is_a(Array) && node[:new_relic][:meetme_plugin][:activate_plugins].length > 0
+if node[:new_relic][:meetme_plugin][:activate_plugins] && node[:new_relic][:meetme_plugin][:activate_plugins].size > 0
   config_map = node[:new_relic][:meetme_plugin][:plugins]
   template "/etc/newrelic/newrelic-plugin-agent.cfg" do
     source "newrelic-plugin-agent.cfg.erb"
