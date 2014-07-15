@@ -1,4 +1,4 @@
-<% Chef::Log.info("apache_httpd = #{@apache_httpd.inspect}\nphp_apc = #{@php_apc.inspect}\nnode = #{node.inspect}\n") %>%YAML 1.2
+%YAML 1.2
 ---
 
 Daemon:n
@@ -47,7 +47,7 @@ Application:
   #  path: /server-status
 <% end %>
 
-<% if @couchdb && @couchdb.is_a(Hash) && @couchdb.size>0 %>
+<% if @couchdb && @couchdb.size>0 %>
   couchdb:
 <%  @couchdb.each do |opt_name, opt_value| %>
   <%= opt_name %>: <%= opt_value %>     
@@ -62,7 +62,7 @@ Application:
   #  password: bar
 <% end %>
 
-<% if @elasticsearch && @elasticsearch.is_a(Hash) && @elasticsearch.size>0 %>
+<% if @elasticsearch && @elasticsearch.size>0 %>
   elasticsearch:
 <%  @elasticsearch.each do |opt_name, opt_value| %>
   <%= opt_name %>: <%= opt_value %>     
@@ -75,7 +75,7 @@ Application:
   #  scheme: http
 <% end %>
 
-<% if @haproxy && @haproxy.is_a(Hash) && @haproxy.size>0 %>
+<% if @haproxy && @haproxy.size>0 %>
   haproxy:
 <%  @haproxy.each do |opt_name, opt_value| %>
   <%= opt_name %>: <%= opt_value %>     
@@ -90,7 +90,7 @@ Application:
   #  path: /haproxy?stats;csv
 <% end %>
 
-<% if @memcached && @memcached.is_a(Hash) && @memcached.size>0 %>
+<% if @memcached && @memcached.size>0 %>
   memcached:
 <%  @memcached.each do |opt_name, opt_value| %>
   <%= opt_name %>: <%= opt_value %>     
@@ -103,7 +103,7 @@ Application:
   #  path: /path/to/unix/socket
 <% end %>
 
-<% if @mongodb && @mongodb.is_a(Hash) && @mongodb.size>0 %>
+<% if @mongodb && @mongodb.size>0 %>
   mongodb:
 <%  @mongodb.each do |opt_name, opt_value| %>
   <%= opt_name %>: <%= opt_value %>     
@@ -144,7 +144,7 @@ Application:
   #      password: pass
 <% end %>
 
-<% if @nginx && @nginx.is_a(Hash) && @nginx.size>0 %>
+<% if @nginx && @nginx.size>0 %>
   nginx:
 <%  @nginx.each do |opt_name, opt_value| %>
   <%= opt_name %>: <%= opt_value %>     
@@ -159,7 +159,7 @@ Application:
   #  path: /nginx_stub_status
 <% end %>
 
-<% if @pgbouncer && @pgbouncer.is_a(Hash) && @pgbouncer.size>0 %>
+<% if @pgbouncer && @pgbouncer.size>0 %>
   pgbouncer:
 <%  @pgbouncer.each do |opt_name, opt_value| %>
   <%= opt_name %>: <%= opt_value %>     
@@ -171,7 +171,7 @@ Application:
   #  user: stats
 <% end %>
 
-<% if @php_apc && @php_apc.is_a(Hash) && @php_apc.size>0 %>
+<% if @php_apc && @php_apc.size>0 %>
   php_apc:
 <%  @php_apc.each do |opt_name, opt_value| %>
   <%= opt_name %>: <%= opt_value %>     
@@ -186,7 +186,7 @@ Application:
   #  path: /apc-nrp.php
 <% end %>
 
-<% if @php_fpm && @php_fpm.is_a(Hash) && @php_fpm.size>0 %>
+<% if @php_fpm && @php_fpm.size>0 %>
   php_fpm:
 <%  @php_fpm.each do |opt_name, opt_value| %>
   <%= opt_name %>: <%= opt_value %>     
@@ -201,7 +201,7 @@ Application:
   #    query: json
 <% end %>
 
-<% if @postgresql && @postgresql.is_a(Hash) && @postgresql.size>0 %>
+<% if @postgresql && @postgresql.size>0 %>
   postgresql:
 <%  @postgresql.each do |opt_name, opt_value| %>
   <%= opt_name %>: <%= opt_value %>     
@@ -215,7 +215,7 @@ Application:
   #  superuser: False
 <% end %>
 
-<% if @rabbitmq && @rabbitmq.is_a(Hash) && @rabbitmq.size>0 %>
+<% if @rabbitmq && @rabbitmq.size>0 %>
   rabbitmq:
 <%  @rabbitmq.each do |opt_name, opt_value| %>
   <%= opt_name %>: <%= opt_value %>     
@@ -235,7 +235,7 @@ Application:
   #
 <% end %>
 
-<% if @redis && @redis.is_a(Hash) && @redis.size>0 %>
+<% if @redis && @redis.size>0 %>
   redis:
 <%  @redis.each do |opt_name, opt_value| %>
   <%= opt_name %>: <%= opt_value %>     
@@ -256,7 +256,7 @@ Application:
   #    #path: /var/run/redis/redis.sock
 <% end %>
 
-<% if @riak && @riak.is_a(Hash) && @riak.size>0 %>
+<% if @riak && @riak.size>0 %>
   riak:
 <%  @riak.each do |opt_name, opt_value| %>
   <%= opt_name %>: <%= opt_value %>     
@@ -269,7 +269,7 @@ Application:
   #  port: 8098
 <% end %>
 
-<% if @uwsgi && @uwsgi.is_a(Hash) && @uwsgi.size>0 %>
+<% if @uwsgi && @uwsgi.size>0 %>
   uwsgi:
 <%  @uwsgi.each do |opt_name, opt_value| %>
   <%= opt_name %>: <%= opt_value %>     
