@@ -8,6 +8,7 @@ version          "0.2.0"
 
 recipe "default", "Install and configure newrelic-sysmond"
 recipe "php", "Install and configure newrelic-php5"
+recipe "meetme-plugin", "Install and configure the MeetMe Plugin Agent"
 
 supports "debian"
 supports "ubuntu"
