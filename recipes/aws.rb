@@ -7,7 +7,9 @@ file "/etc/sudoers.d/newrelic-bundle-install" do
   group "root"
   mode 0440
   action :create
-  content "newrelic ALL=(root) NOPASSWD: /usr/local/bin/bundle install"
+  # newline is important
+  content "newrelic ALL=(root) NOPASSWD: /usr/local/bin/bundle install
+"
 end
 
 include_recipe 'newrelic_plugins::aws_cloudwatch'
