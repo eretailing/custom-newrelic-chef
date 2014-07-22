@@ -37,5 +37,23 @@ if node[:new_relic][:meetme_plugin][:activate_plugins] && node[:new_relic][:meet
     notifies :enable, "service[newrelic-plugin-agent]"
     notifies :start, "service[newrelic-plugin-agent]"
   end
-  
+ 
+  logrotate_file="/etc/logrotate.d/newrelic-plugin-agent"
+  file "#{logrotate_file}"  do
+    owner "root"
+    group "root"
+    mode 0640
+    action :create
+    # newline is important
+    content "/var/log/newrelic/newrelic-plugin-agent.log {
+    rotate 7
+    daily
+    missingok
+    notifempty
+    sharedscripts
+    copytruncate
+    compress
+}
+"
+    end 
 end
