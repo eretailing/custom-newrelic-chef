@@ -12,6 +12,7 @@ unless node[:new_relic][:license_key].nil? || node[:new_relic][:license_key].len
       "NR_INSTALL_KEY" => node[:new_relic][:license_key]
     })
     command "newrelic-install install"
+    not_if { File.exists?("/usr/bin/newrelic-daemon") }
   end
   
   # Some editions have the license key in an additional location
