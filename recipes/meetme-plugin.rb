@@ -17,7 +17,7 @@ if node[:new_relic][:meetme_plugin][:activate_plugins] && node[:new_relic][:meet
   
   sheller = Mixlib::ShellOut.new("fgrep DocumentRoot /etc/apache2/sites-enabled/000-default | sed -e 's/[^/]*//'")
   sheller.run_command
-  default_site_docroot = sheller.stdout
+  default_site_docroot = sheller.stdout.strip
   if node[:new_relic][:meetme_plugin][:plugins][:php_apc] && default_site_docroot.length>2
     # put APC file in place
     # put it in the DocumentRoot of the default vhost
