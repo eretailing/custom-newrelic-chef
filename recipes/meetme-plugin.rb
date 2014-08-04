@@ -35,6 +35,7 @@ if node[:new_relic][:meetme_plugin][:activate_plugins] && node[:new_relic][:meet
   execute "install newrelic-plugin-agent init script" do
     command "cp /opt/newrelic-plugin-agent/newrelic-plugin-agent.deb /etc/init.d/newrelic-plugin-agent ;
       chmod 755 /etc/init.d/newrelic-plugin-agent ;
+      sed -i -e "s/^PIDDIR_OWNER=$/PIDDIR_OWNER=\"newrelic\"/" /etc/init.d/newrelic-plugin-agent ;
       chown root:root /etc/init.d/newrelic-plugin-agent ;
       update-rc.d newrelic-plugin-agent defaults"
     not_if { File.exists?("/etc/init.d/newrelic-plugin-agent") }
