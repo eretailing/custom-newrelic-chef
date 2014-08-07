@@ -17,7 +17,7 @@ unless node[:new_relic][:license_key].nil? || node[:new_relic][:license_key].len
   
   # Some editions have the license key in an additional location
   execute "Update newrelic PHP license key" do
-    command %Q{sed -i -e "s/newrelic.license = \"\"/newrelic.license = \"#{node[:new_relic][:license_key]}\"/" /etc/php5/conf.d/newrelic.ini }
+    command %Q{sed -i -e "s/^newrelic.license = \"\"$/newrelic.license = \"#{node[:new_relic][:license_key]}\"/" /etc/php5/conf.d/newrelic.ini }
     only_if { File.exists?("/etc/php5/conf.d/newrelic.ini") }
   end
 end
