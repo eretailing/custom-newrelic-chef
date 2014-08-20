@@ -1,6 +1,3 @@
-chef_gem "chef-rewind"
-require 'chef/rewind'
-
 unless node["new_relic"]["license_key"].empty?
 
   case node['platform']
@@ -19,17 +16,26 @@ unless node["new_relic"]["license_key"].empty?
         find.exitstatus && find.stdout.length>1
       end
     end
-
-    include_recipe "newrelic-sysmond"
-    
-    rewind "apt_repository[newrelic]" do
-      action :nothing
-    end
     
   when "redhat", "centos", "amazon", "scientific"
 
+    # from the original cookbook - not directly supported here
     include_recipe "newrelic-sysmond"
     
+  end
+  
+  package "newrelic-sysmond"
+
+  template "/etc/newrelic/nrsysmond.cfg" do
+    source "nrsysmond.cfg.erb"
+    owner "root"
+    group "newrelic"
+    mode 0640
+    notifies :restart, "service[newrelic-sysmond]"
+  end
+
+  service "newrelic-sysmond" do
+    action [:enable, :start]
   end
 
 end
