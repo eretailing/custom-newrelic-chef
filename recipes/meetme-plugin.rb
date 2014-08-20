@@ -6,7 +6,13 @@ package "python-pip"
 execute "pip install newrelic-plugin-agent"
 
 if node[:new_relic][:meetme_plugin][:activate_plugins] && node[:new_relic][:meetme_plugin][:activate_plugins].size > 0
-  config_map = node[:new_relic][:meetme_plugin][:plugins]
+  config_map = {}.merge(node[:new_relic][:meetme_plugin][:plugins])
+  # remove config for inactive plugins
+  config_map.keep_if { |key, value| node[:new_relic][:meetme_plugin][:activate_plugins].include?(key) }
+  if config_map.size == 0
+    raise "node[:new_relic][:meetme_plugin][:activate_plugins] = #{node[:new_relic][:meetme_plugin][:activate_plugins].inspect} but " \
+      "config map at node[:new_relic][:meetme_plugin][:plugins] is missing entries for some plugins."
+  end
   template "/etc/newrelic/newrelic-plugin-agent.cfg" do
     source "newrelic-plugin-agent.cfg.erb"
     owner "root"
