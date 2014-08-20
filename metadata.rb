@@ -1,4 +1,4 @@
-name             "shlomo-newrelic"
+name             "custom-newrelic-chef"
 maintainer       "Shlomo Swidler"
 maintainer_email "shlomo.swidler@orchestratus.com"
 license          "MIT"
