@@ -7,7 +7,6 @@ long_description IO.read(File.join(File.dirname(__FILE__), "README.md"))
 version          "0.2.0"
 
 recipe "default", "Install and configure newrelic-sysmond"
-recipe "php", "Install and configure newrelic-php5"
 recipe "meetme-plugin", "Install and configure the MeetMe Plugin Agent"
 recipe "aws", "Install and configure NewRelic's AWS CloudWatch plugin"
 
