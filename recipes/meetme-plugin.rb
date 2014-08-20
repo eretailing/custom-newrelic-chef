@@ -15,15 +15,17 @@ if node[:new_relic][:meetme_plugin][:activate_plugins] && node[:new_relic][:meet
     variables config_map
   end
   
-  sheller = Mixlib::ShellOut.new("fgrep DocumentRoot /etc/apache2/sites-enabled/000-default | sed -e 's/[^/]*//'")
-  sheller.run_command
-  default_site_docroot = sheller.stdout.strip
-  if node[:new_relic][:meetme_plugin][:plugins][:php_apc] && default_site_docroot.length>2
-    # put APC file in place
-    # put it in the DocumentRoot of the default vhost
-    execute "place newrelic-plugin-agent APC script into default vhost document root #{default_site_docroot}" do
-      command "cp /opt/newrelic-plugin-agent/apc-nrp.php #{default_site_docroot}"
-      not_if { File.exists?("#{default_site_docroot}/apc-nrp.php") }
+  if node[:new_relic][:meetme_plugin][:activate_plugins].include?('php_apc') 
+    sheller = Mixlib::ShellOut.new("fgrep DocumentRoot /etc/apache2/sites-enabled/000-default | sed -e 's/[^/]*//'")
+    sheller.run_command
+    default_site_docroot = sheller.stdout.strip
+    if default_site_docroot.length>2
+      # put APC file in place
+      # put it in the DocumentRoot of the default vhost
+      execute "place newrelic-plugin-agent APC script into default vhost document root #{default_site_docroot}" do
+        command "cp /opt/newrelic-plugin-agent/apc-nrp.php #{default_site_docroot}"
+        not_if { File.exists?("#{default_site_docroot}/apc-nrp.php") }
+      end
     end
   end  
   
