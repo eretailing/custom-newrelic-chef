@@ -1,4 +1,4 @@
-#package 'ruby1.9.3' # for the upcoming newrelic plugin. It's written in Ruby.
+package 'ruby1.9.3' # for the upcoming newrelic plugin. It's written in Ruby.
 package 'make' # the bundler script in the newrelic plugin install relies on this
 
 # the upcoming newrelic recipe relies on the 'newrelic' user being able to install system gems via sudo.
